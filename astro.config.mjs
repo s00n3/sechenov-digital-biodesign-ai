@@ -3,7 +3,8 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: "https://digital-biodesign.sechenov.ru",
+  site: process.env.SITE || "https://s00n3.github.io",
+  base: process.env.BASE_PATH || "/sechenov-digital-biodesign-ai",
   trailingSlash: "always",
   integrations: [mdx(), sitemap()],
 });

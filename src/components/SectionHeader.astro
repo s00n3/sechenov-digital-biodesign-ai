@@ -1,5 +1,6 @@
 ---
 const { label, title, subtitle, link } = Astro.props;
+import { withBase } from "@/utils/paths";
 ---
 <div class="section-head" data-reveal>
   <div>
@@ -7,5 +8,5 @@ const { label, title, subtitle, link } = Astro.props;
     <h2 class="section-title">{title}</h2>
     {subtitle && <p class="section-subtitle">{subtitle}</p>}
   </div>
-  {link && <a class="btn-ghost" href={link.href}>{link.label} →</a>}
+  {link && <a class="btn-ghost" href={withBase(link.href)}>{link.label} →</a>}
 </div>

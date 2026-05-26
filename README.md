@@ -37,3 +37,23 @@ npm run build
 ```
 
 Статические файлы появляются в `dist/`.
+
+## GitHub Pages
+
+Тестовый деплой настроен через GitHub Actions.
+
+В настройках репозитория GitHub нужно открыть `Settings -> Pages` и выбрать источник `GitHub Actions`.
+
+Тестовый адрес:
+
+```text
+https://s00n3.github.io/sechenov-digital-biodesign-ai/
+```
+
+Для деплоя на корневой домен задайте переменные окружения:
+
+```bash
+SITE=https://example.com
+BASE_PATH=/
+npm run build
+```

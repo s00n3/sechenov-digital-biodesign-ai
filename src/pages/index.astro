@@ -9,6 +9,7 @@ import CaseGrid from "@/components/CaseGrid.astro";
 import DivisionGrid from "@/components/DivisionGrid.astro";
 import { audiences, services, competencies, partnershipFormats } from "@/data/site";
 import { getPublishedCollection } from "@/utils/content";
+import { withBase } from "@/utils/paths";
 
 const [news, events, programs, cases, divisions] = await Promise.all([
   getPublishedCollection("news"),
@@ -79,7 +80,7 @@ events.sort((a, b) => +a.data.eventDate - +b.data.eventDate);
   <section class="section section-purple" id="contacts">
     <div class="container">
       <SectionHeader label="Контакты" title="Начнём разговор" subtitle="Расскажите о задаче: подберём формат, команду и следующий шаг." />
-      <a class="btn-primary" href="/kontakty/?topic=project#request-form">Перейти к форме заявки</a>
+      <a class="btn-primary" href={withBase("/kontakty/?topic=project#request-form")}>Перейти к форме заявки</a>
     </div>
   </section>
 </BaseLayout>

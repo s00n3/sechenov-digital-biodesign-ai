@@ -2,6 +2,7 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import { formatDate, isPublished } from "@/utils/content";
+import { withBase } from "@/utils/paths";
 export async function getStaticPaths() {
   const entries = (await getCollection("events")).filter(isPublished);
   return entries.map((entry) => ({ params: { slug: entry.slug }, props: { entry } }));
@@ -10,6 +11,6 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 <BaseLayout title={entry.data.seoTitle || entry.data.title} description={entry.data.seoDescription || entry.data.description} image={entry.data.image || "/og-default.svg"} canonical={`/sobytiya/${entry.slug}/`}>
-  <article class="hero"><div class="container hero-inner" data-reveal><div class="hero-eyebrow">{entry.data.format}</div><h1>{entry.data.title}</h1><p class="hero-sub">{entry.data.description}</p><p class="meta">{formatDate(entry.data.eventDate)}{entry.data.location ? ` · ${entry.data.location}` : ""}</p>{entry.data.registrationUrl && <a class="btn-primary" href={entry.data.registrationUrl}>Регистрация</a>}</div></article>
+  <article class="hero"><div class="container hero-inner" data-reveal><div class="hero-eyebrow">{entry.data.format}</div><h1>{entry.data.title}</h1><p class="hero-sub">{entry.data.description}</p><p class="meta">{formatDate(entry.data.eventDate)}{entry.data.location ? ` · ${entry.data.location}` : ""}</p>{entry.data.registrationUrl && <a class="btn-primary" href={withBase(entry.data.registrationUrl)}>Регистрация</a>}</div></article>
   <section class="section section-dark"><div class="container prose"><Content /></div></section>
 </BaseLayout>

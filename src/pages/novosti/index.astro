@@ -3,10 +3,11 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import PageHero from "@/components/PageHero.astro";
 import SectionHeader from "@/components/SectionHeader.astro";
 import { formatDate, getPublishedCollection } from "@/utils/content";
+import { withBase } from "@/utils/paths";
 const news = await getPublishedCollection("news");
 news.sort((a,b)=>+b.data.date-+a.data.date);
 ---
 <BaseLayout title="Новости" description="Новости Института цифрового биодизайна и ИИ в медицине.">
   <PageHero label="Новости" title={"Новости <span>института</span>"} description="Публикации из Decap CMS. Материалы с published: false не выводятся." />
-  <section class="section section-dark"><div class="container"><SectionHeader label="Лента" title="Все новости" /><div class="card-grid">{news.map((item)=><a class="cut-card" href={`/novosti/${item.slug}/`} data-reveal><span class="kicker">{item.data.category}</span><p class="meta">{formatDate(item.data.date)}</p><h2 class="card-title">{item.data.title}</h2><p class="card-desc">{item.data.description}</p><span class="arrow-link" style="margin-top:22px">Читать →</span></a>)}</div></div></section>
+  <section class="section section-dark"><div class="container"><SectionHeader label="Лента" title="Все новости" /><div class="card-grid">{news.map((item)=><a class="cut-card" href={withBase(`/novosti/${item.slug}/`)} data-reveal><span class="kicker">{item.data.category}</span><p class="meta">{formatDate(item.data.date)}</p><h2 class="card-title">{item.data.title}</h2><p class="card-desc">{item.data.description}</p><span class="arrow-link" style="margin-top:22px">Читать →</span></a>)}</div></div></section>
 </BaseLayout>
