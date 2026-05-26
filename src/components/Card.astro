@@ -1,0 +1,12 @@
+---
+import Icon from "@/components/Icon.astro";
+const { icon = "ai", title, desc, href, meta } = Astro.props;
+const Tag = href ? "a" : "article";
+---
+<Tag class="cut-card" href={href} data-reveal>
+  <div class="card-icon"><Icon name={icon} /></div>
+  {meta && <div class="num">{meta}</div>}
+  <h3 class="card-title">{title}</h3>
+  <p class="card-desc">{desc}</p>
+  {href && <span class="arrow-link" style="margin-top:24px">Подробнее →</span>}
+</Tag>

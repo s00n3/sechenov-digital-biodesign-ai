@@ -1,0 +1,14 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageHero from "@/components/PageHero.astro";
+import SectionHeader from "@/components/SectionHeader.astro";
+import ProgramGrid from "@/components/ProgramGrid.astro";
+import ContentCards from "@/components/ContentCards.astro";
+import { getPublishedCollection } from "@/utils/content";
+const programs = await getPublishedCollection("programs");
+---
+<BaseLayout title="Образование" description="Образовательные программы по AI, медицинским данным, биодизайну и цифровым продуктам.">
+  <PageHero label="Образование" title={"Программы для тех, кто строит <span>цифровую медицину</span>"} description="Модульные форматы для студентов, врачей, исследователей и корпоративных команд." ctaPrimary={{ label: "Подобрать программу", href: "#programs" }} ctaSecondary={{ label: "Заявка на обучение", href: "/kontakty/?topic=education#request-form" }} />
+  <section class="section section-dark" id="programs"><div class="container"><SectionHeader label="Программы" title="Каталог программ" /><ProgramGrid programs={programs} /></div></section>
+  <section class="section section-purple"><div class="container"><SectionHeader label="Форматы" title="Учебные треки под разные задачи" /><ContentCards items={[{icon:"education",title:"Цифровая кафедра",desc:"Практический трек для студентов медицинских и смежных направлений."},{icon:"data",title:"Корпоративное обучение",desc:"Модули под задачи команды: данные, AI, продукт, регуляторика."},{icon:"science",title:"Исследовательские школы",desc:"Интенсивы вокруг проектов, публикаций и прикладных исследований."}]} /></div></section>
+</BaseLayout>

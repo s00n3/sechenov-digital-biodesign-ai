@@ -1,0 +1,15 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageHero from "@/components/PageHero.astro";
+import SectionHeader from "@/components/SectionHeader.astro";
+import CaseGrid from "@/components/CaseGrid.astro";
+import ContentCards from "@/components/ContentCards.astro";
+import { services } from "@/data/site";
+import { getPublishedCollection } from "@/utils/content";
+const cases = await getPublishedCollection("cases");
+---
+<BaseLayout title="Решения и кейсы" description="Кейсы, пилоты и цифровые решения Института цифрового биодизайна и ИИ в медицине.">
+  <PageHero label="Решения и кейсы" title={"Цифровые решения <span>для реальных медицинских задач</span>"} description="Собираем команды под пилоты, AI-сервисы, исследования и внедрение цифровых продуктов." ctaPrimary={{ label: "Обсудить разработку", href: "/kontakty/?topic=development#request-form" }} ctaSecondary={{ label: "Наука и разработки", href: "/nauka-i-razrabotki/#digital-services" }} />
+  <section class="section section-dark"><div class="container"><SectionHeader label="Кейсы" title="Проекты и результаты" /><CaseGrid cases={cases} /></div></section>
+  <section class="section section-purple"><div class="container"><SectionHeader label="Направления" title="Что можно запустить вместе" /><ContentCards columns="two" items={services.map((s) => ({ icon: "product", title: s.title, desc: s.desc, href: s.href }))} /></div></section>
+</BaseLayout>

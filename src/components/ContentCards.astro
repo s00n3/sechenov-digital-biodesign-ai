@@ -1,0 +1,8 @@
+---
+import Card from "@/components/Card.astro";
+type CardItem = { icon?: string; title: string; desc: string; href?: string; meta?: string };
+const { items, columns = "three" } = Astro.props as { items: CardItem[]; columns?: string };
+---
+<div class={`card-grid ${columns}`}>
+  {items.map((item) => <Card {...item} />)}
+</div>

@@ -1,0 +1,12 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageHero from "@/components/PageHero.astro";
+import SectionHeader from "@/components/SectionHeader.astro";
+import ContentCards from "@/components/ContentCards.astro";
+import { audiences, partnershipFormats } from "@/data/site";
+---
+<BaseLayout title="Партнёрства" description="Форматы сотрудничества с институтом: пилоты, НИОКР, консалтинг, обучение и совместная разработка.">
+  <PageHero label="Партнёрства" title={"Совместные проекты <span>для медицины будущего</span>"} description="Запускаем партнёрства с клиниками, индустрией, государственными структурами, университетами и технологическими компаниями." ctaPrimary={{ label: "Стать партнёром", href: "/kontakty/?topic=partnership#request-form" }} ctaSecondary={{ label: "Форматы сотрудничества", href: "#formats" }} />
+  <section class="section section-dark" id="formats"><div class="container"><SectionHeader label="Форматы" title="Как можно сотрудничать" /><ContentCards items={partnershipFormats.map(([title, desc, time]) => ({ icon:"product", title, desc:`${desc} Срок: ${time}`, href:"/kontakty/?topic=partnership#request-form" }))} /></div></section>
+  <section class="section section-purple"><div class="container"><SectionHeader label="Партнёры" title="Для каких организаций" /><ContentCards items={audiences.map(([icon,title,desc]) => ({icon,title,desc}))} /></div></section>
+</BaseLayout>

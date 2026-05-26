@@ -1,0 +1,45 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageHero from "@/components/PageHero.astro";
+import SectionHeader from "@/components/SectionHeader.astro";
+import { site } from "@/data/site";
+---
+<BaseLayout title="Контакты" description="Форма заявки и контакты Института цифрового биодизайна и ИИ в медицине.">
+  <PageHero label="Контакты" title={"Расскажите о задаче, <span>мы подберём формат</span>"} description="Форма готова к подключению Netlify Forms, Formspree или backend заказчика. Сейчас работает аккуратная заглушка успешной отправки." ctaPrimary={{ label: "К форме", href: "#request-form" }} />
+  <section class="section section-dark">
+    <div class="container grid-12">
+      <div style="grid-column:span 5" data-reveal>
+        <SectionHeader label="Связь" title="Контакты института" subtitle={`${site.address}. Ответим на обращение и предложим следующий шаг.`} />
+        <p class="section-subtitle"><a href={`mailto:${site.email}`}>{site.email}</a><br /><a href="https://www.sechenov.ru/">www.sechenov.ru</a></p>
+      </div>
+      <form id="request-form" name="project-request" method="POST" data-netlify="true" class="cut-card" style="grid-column:span 7" data-reveal>
+        <input type="hidden" name="form-name" value="project-request" />
+        <div class="form-grid">
+          <div class="form-field"><label for="name">Имя</label><input id="name" name="name" autocomplete="name" required /></div>
+          <div class="form-field"><label for="organization">Организация</label><input id="organization" name="organization" autocomplete="organization" /></div>
+          <div class="form-field"><label for="role">Роль</label><input id="role" name="role" autocomplete="organization-title" /></div>
+          <div class="form-field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required /></div>
+          <div class="form-field"><label for="phone">Телефон</label><input id="phone" name="phone" type="tel" autocomplete="tel" /></div>
+          <div class="form-field">
+            <label for="topic">Тип запроса</label>
+            <select id="topic" name="topic" required>
+              <option value="">Выберите тип запроса</option>
+              <option value="project">Обсудить проект</option>
+              <option value="education">Образование</option>
+              <option value="rd">НИР/НИОКР</option>
+              <option value="partnership">Партнёрство</option>
+              <option value="development">Разработка</option>
+              <option value="consulting">Консультация</option>
+            </select>
+          </div>
+          <div class="form-field full"><label for="description">Описание задачи</label><textarea id="description" name="description" required></textarea></div>
+          <div class="form-field"><label for="materials">Наличие материалов</label><select id="materials" name="materials"><option>Есть ТЗ или описание</option><option>Есть данные для анализа</option><option>Материалов пока нет</option></select></div>
+          <div class="form-field"><label for="contactFormat">Желаемый формат связи</label><select id="contactFormat" name="contactFormat"><option>Email</option><option>Телефон</option><option>Онлайн-встреча</option><option>Очная встреча</option></select></div>
+          <div class="form-field full"><label class="checkline"><input type="checkbox" name="privacy" required /><span>Согласен на обработку персональных данных и получение ответа по указанным контактам.</span></label></div>
+        </div>
+        <button class="btn-primary" type="submit" style="margin-top:20px;width:100%;justify-content:center">Отправить запрос</button>
+        <div id="form-success" class="form-note" tabindex="-1">Запрос подготовлен. После подключения обработчика форма будет отправлять данные заказчику.</div>
+      </form>
+    </div>
+  </section>
+</BaseLayout>

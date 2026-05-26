@@ -1,0 +1,14 @@
+---
+type DivisionEntry = { data: { title: string; group: string; description: string; lead?: string } };
+const { divisions = [] } = Astro.props as { divisions: DivisionEntry[] };
+---
+<div class="card-grid three">
+  {divisions.map((division) => (
+    <article class="cut-card" data-reveal>
+      <span class="kicker">{division.data.group}</span>
+      <h3 class="card-title">{division.data.title}</h3>
+      <p class="card-desc">{division.data.description}</p>
+      {division.data.lead && <p class="meta" style="margin-top:18px">Руководитель: {division.data.lead}</p>}
+    </article>
+  ))}
+</div>

@@ -1,0 +1,12 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageHero from "@/components/PageHero.astro";
+import SectionHeader from "@/components/SectionHeader.astro";
+import DivisionGrid from "@/components/DivisionGrid.astro";
+import { getPublishedCollection } from "@/utils/content";
+const divisions = await getPublishedCollection("divisions");
+---
+<BaseLayout title="Подразделения" description="Лаборатории, проектные группы и образовательные подразделения института.">
+  <PageHero label="Подразделения" title={"Команды института: <span>лаборатории и проектные группы</span>"} description="Структура, которая поддерживает исследования, образование, внедрение и партнёрские проекты." ctaPrimary={{ label: "Обсудить проект", href: "/kontakty/?topic=project#request-form" }} />
+  <section class="section section-dark"><div class="container"><SectionHeader label="Структура" title="Подразделения института" /><DivisionGrid divisions={divisions} /></div></section>
+</BaseLayout>

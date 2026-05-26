@@ -1,0 +1,8 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#27292E"/>
+  <path d="M0 0h1200v630H0z" fill="url(#g)"/>
+  <path d="M80 110h1040M80 220h1040M80 330h1040M80 440h1040M80 550h1040M180 50v530M360 50v530M540 50v530M720 50v530M900 50v530M1080 50v530" stroke="#A29AFF" stroke-opacity=".09"/>
+  <text x="80" y="280" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="64" font-weight="700">Digital Biodesign AI</text>
+  <text x="80" y="350" fill="#A29AFF" font-family="Arial, sans-serif" font-size="34">Сеченовский Университет</text>
+  <defs><radialGradient id="g" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(950 90) rotate(133) scale(640 580)"><stop stop-color="#403C6F"/><stop offset="1" stop-color="#27292E" stop-opacity="0"/></radialGradient></defs>
+</svg>

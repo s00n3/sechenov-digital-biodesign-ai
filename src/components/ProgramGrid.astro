@@ -1,0 +1,19 @@
+---
+type ProgramEntry = { data: { title: string; description: string; audience: string; direction: string; duration: string; format: string; ctaLabel: string } };
+const { programs = [] } = Astro.props as { programs: ProgramEntry[] };
+---
+<div class="card-grid two">
+  {programs.map((program) => (
+    <article class="cut-card" data-reveal>
+      <span class="kicker">{program.data.direction}</span>
+      <h3 class="card-title">{program.data.title}</h3>
+      <p class="card-desc">{program.data.description}</p>
+      <div class="case-rows">
+        <div class="case-row"><b>Для кого</b><span>{program.data.audience}</span></div>
+        <div class="case-row"><b>Формат</b><span>{program.data.format}</span></div>
+        <div class="case-row"><b>Срок</b><span>{program.data.duration}</span></div>
+      </div>
+      <a class="arrow-link" href="/kontakty/?topic=education#request-form">{program.data.ctaLabel} →</a>
+    </article>
+  ))}
+</div>

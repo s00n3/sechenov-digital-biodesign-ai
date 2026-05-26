@@ -1,0 +1,85 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageHero from "@/components/PageHero.astro";
+import SectionHeader from "@/components/SectionHeader.astro";
+import ContentCards from "@/components/ContentCards.astro";
+import NewsList from "@/components/NewsList.astro";
+import ProgramGrid from "@/components/ProgramGrid.astro";
+import CaseGrid from "@/components/CaseGrid.astro";
+import DivisionGrid from "@/components/DivisionGrid.astro";
+import { audiences, services, competencies, partnershipFormats } from "@/data/site";
+import { getPublishedCollection } from "@/utils/content";
+
+const [news, events, programs, cases, divisions] = await Promise.all([
+  getPublishedCollection("news"),
+  getPublishedCollection("events"),
+  getPublishedCollection("programs"),
+  getPublishedCollection("cases"),
+  getPublishedCollection("divisions"),
+]);
+news.sort((a, b) => +b.data.date - +a.data.date);
+events.sort((a, b) => +a.data.eventDate - +b.data.eventDate);
+---
+<BaseLayout title="Институт цифрового биодизайна и ИИ в медицине" description="Многостраничный сайт Института цифрового биодизайна и искусственного интеллекта в медицине Сеченовского Университета.">
+  <PageHero
+    label="Сеченовский Университет"
+    title={"Цифровой биодизайн и <span>искусственный интеллект</span> в медицине"}
+    description="Помогаем медицинским организациям, исследователям и индустриальным партнёрам запускать AI-решения, НИР/НИОКР, образовательные программы и совместные цифровые продукты."
+    ctaPrimary={{ label: "Обсудить проект", href: "/kontakty/?topic=project#request-form" }}
+    ctaSecondary={{ label: "Подобрать программу", href: "/obrazovanie/#programs" }}
+  />
+  <section class="section section-dark" id="audiences">
+    <div class="container">
+      <SectionHeader label="Для кого" title="Работаем с медициной, наукой и индустрией" subtitle="Сохраняем логику исходной страницы: пользователь быстро узнаёт себя и переходит к подходящему формату сотрудничества." />
+      <ContentCards items={audiences.map(([icon, title, desc]) => ({ icon, title, desc, href: "/kontakty/?topic=project#request-form" }))} />
+    </div>
+  </section>
+  <section class="section section-purple" id="services">
+    <div class="container">
+      <SectionHeader label="Услуги" title="От идеи до внедрения" subtitle="Объединяем научную экспертизу, продуктовый подход и разработку цифровых решений для медицинского контура." />
+      <ContentCards columns="two" items={services.map((s) => ({ icon: "ai", title: s.title, desc: `${s.sub}. ${s.desc}`, href: s.href, meta: s.num }))} />
+    </div>
+  </section>
+  <section class="section section-deep" id="competencies">
+    <div class="container">
+      <SectionHeader label="Компетенции" title="Экспертиза на стыке данных, клиники и продукта" link={{ label: "Наука и разработки", href: "/nauka-i-razrabotki/" }} />
+      <ContentCards items={competencies.map(([icon, title, desc]) => ({ icon, title, desc }))} />
+    </div>
+  </section>
+  <section class="section section-dark" id="cases">
+    <div class="container">
+      <SectionHeader label="Решения и кейсы" title="Пилоты, исследования и внедрения" link={{ label: "Все кейсы", href: "/resheniya-i-keysy/" }} />
+      <CaseGrid cases={cases.slice(0, 4)} />
+    </div>
+  </section>
+  <section class="section section-purple" id="education">
+    <div class="container">
+      <SectionHeader label="Образование" title="Программы для студентов, врачей и команд" link={{ label: "Подобрать программу", href: "/obrazovanie/#programs" }} />
+      <ProgramGrid programs={programs.slice(0, 4)} />
+    </div>
+  </section>
+  <section class="section section-dark" id="divisions">
+    <div class="container">
+      <SectionHeader label="Подразделения" title="Лаборатории и проектные группы" link={{ label: "Все подразделения", href: "/podrazdeleniya/" }} />
+      <DivisionGrid divisions={divisions.slice(0, 3)} />
+    </div>
+  </section>
+  <section class="section section-deep" id="collab">
+    <div class="container">
+      <SectionHeader label="Партнёрства" title="Форматы сотрудничества" link={{ label: "Стать партнёром", href: "/partnerstva/" }} />
+      <ContentCards items={partnershipFormats.map(([title, desc, time]) => ({ icon: "product", title, desc: `${desc} Срок: ${time}`, href: "/kontakty/?topic=partnership#request-form" }))} />
+    </div>
+  </section>
+  <section class="section section-dark" id="news">
+    <div class="container">
+      <SectionHeader label="О институте" title="Новости и события" link={{ label: "Все новости", href: "/novosti/" }} />
+      <NewsList news={news.slice(0, 3)} events={events.slice(0, 2)} />
+    </div>
+  </section>
+  <section class="section section-purple" id="contacts">
+    <div class="container">
+      <SectionHeader label="Контакты" title="Начнём разговор" subtitle="Расскажите о задаче: подберём формат, команду и следующий шаг." />
+      <a class="btn-primary" href="/kontakty/?topic=project#request-form">Перейти к форме заявки</a>
+    </div>
+  </section>
+</BaseLayout>

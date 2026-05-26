@@ -1,0 +1,117 @@
+# Локальный режим редактирования: запустите `npm run cms` вместе с `npm run dev`.
+# Decap будет писать изменения прямо в локальный репозиторий без GitHub/Netlify-логина.
+local_backend: true
+
+backend:
+  name: git-gateway
+  branch: main
+
+# Пример продакшен-режима через GitHub OAuth:
+# backend:
+#   name: github
+#   repo: ORGANIZATION/REPOSITORY
+#   branch: main
+# publish_mode: editorial_workflow
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+locale: "ru"
+# В локальном proxy-режиме Decap не поддерживает editorial_workflow.
+
+collections:
+  - name: "news"
+    label: "Новости"
+    folder: "src/content/news"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields: &news_fields
+      - { label: "Заголовок", name: "title", widget: "string" }
+      - { label: "Краткое описание", name: "description", widget: "text" }
+      - { label: "Дата публикации", name: "date", widget: "datetime" }
+      - { label: "Категория", name: "category", widget: "select", options: ["Новости", "Партнёрство", "Наука", "Образование"] }
+      - { label: "Обложка", name: "image", widget: "image", required: false }
+      - { label: "SEO Title", name: "seoTitle", widget: "string", required: false }
+      - { label: "SEO Description", name: "seoDescription", widget: "text", required: false }
+      - { label: "Опубликовано", name: "published", widget: "boolean", default: true }
+      - { label: "Текст", name: "body", widget: "markdown" }
+  - name: "events"
+    label: "События"
+    folder: "src/content/events"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Название", name: "title", widget: "string" }
+      - { label: "Краткое описание", name: "description", widget: "text" }
+      - { label: "Дата события", name: "eventDate", widget: "datetime" }
+      - { label: "Формат", name: "format", widget: "select", options: ["Онлайн", "Очно", "Гибрид"] }
+      - { label: "Место", name: "location", widget: "string", required: false }
+      - { label: "Ссылка на регистрацию", name: "registrationUrl", widget: "string", required: false }
+      - { label: "Обложка", name: "image", widget: "image", required: false }
+      - { label: "SEO Title", name: "seoTitle", widget: "string", required: false }
+      - { label: "SEO Description", name: "seoDescription", widget: "text", required: false }
+      - { label: "Опубликовано", name: "published", widget: "boolean", default: true }
+      - { label: "Описание", name: "body", widget: "markdown" }
+  - name: "programs"
+    label: "Образовательные программы"
+    folder: "src/content/programs"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Название", name: "title", widget: "string" }
+      - { label: "Описание", name: "description", widget: "text" }
+      - { label: "Для кого", name: "audience", widget: "text" }
+      - { label: "Направление", name: "direction", widget: "string" }
+      - { label: "Длительность", name: "duration", widget: "string" }
+      - { label: "Формат", name: "format", widget: "string" }
+      - { label: "CTA", name: "ctaLabel", widget: "string", default: "Оставить заявку" }
+      - { label: "SEO Title", name: "seoTitle", widget: "string", required: false }
+      - { label: "SEO Description", name: "seoDescription", widget: "text", required: false }
+      - { label: "Опубликовано", name: "published", widget: "boolean", default: true }
+      - { label: "Текст", name: "body", widget: "markdown" }
+  - name: "cases"
+    label: "Кейсы"
+    folder: "src/content/cases"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Название", name: "title", widget: "string" }
+      - { label: "Сегмент", name: "segment", widget: "string" }
+      - { label: "Задача", name: "task", widget: "text" }
+      - { label: "Решение", name: "solution", widget: "text" }
+      - { label: "Результат", name: "result", widget: "text" }
+      - { label: "SEO Title", name: "seoTitle", widget: "string", required: false }
+      - { label: "SEO Description", name: "seoDescription", widget: "text", required: false }
+      - { label: "Опубликовано", name: "published", widget: "boolean", default: true }
+      - { label: "Текст", name: "body", widget: "markdown" }
+  - name: "divisions"
+    label: "Подразделения"
+    folder: "src/content/divisions"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Название", name: "title", widget: "string" }
+      - { label: "Группа", name: "group", widget: "string" }
+      - { label: "Описание", name: "description", widget: "text" }
+      - { label: "Руководитель", name: "lead", widget: "string", required: false }
+      - { label: "SEO Title", name: "seoTitle", widget: "string", required: false }
+      - { label: "SEO Description", name: "seoDescription", widget: "text", required: false }
+      - { label: "Опубликовано", name: "published", widget: "boolean", default: true }
+      - { label: "Текст", name: "body", widget: "markdown" }
+  - name: "pages"
+    label: "SEO страниц"
+    files:
+      - label: "Главная"
+        name: "home"
+        file: "src/content/pages/home.yml"
+        fields: &page_fields
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "SEO Title", name: "seoTitle", widget: "string", required: false }
+          - { label: "SEO Description", name: "seoDescription", widget: "text", required: false }
+      - { label: "Решения", name: "solutions", file: "src/content/pages/solutions.yml", fields: *page_fields }
+      - { label: "Образование", name: "education", file: "src/content/pages/education.yml", fields: *page_fields }
+      - { label: "Наука", name: "science", file: "src/content/pages/science.yml", fields: *page_fields }
+      - { label: "Подразделения", name: "divisions_page", file: "src/content/pages/divisions.yml", fields: *page_fields }
+      - { label: "Партнёрства", name: "partnerships", file: "src/content/pages/partnerships.yml", fields: *page_fields }
+      - { label: "О институте", name: "about", file: "src/content/pages/about.yml", fields: *page_fields }
+      - { label: "Контакты", name: "contacts", file: "src/content/pages/contacts.yml", fields: *page_fields }

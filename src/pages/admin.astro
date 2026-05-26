@@ -1,0 +1,22 @@
+---
+---
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CMS - Институт цифрового биодизайна и ИИ</title>
+  </head>
+  <body>
+    <script is:inline>
+      try {
+        const user = localStorage.getItem("decap-cms-user");
+        if (user && user.includes('"backendName":"github"')) {
+          localStorage.removeItem("decap-cms-user");
+        }
+      } catch {}
+    </script>
+    <script is:inline src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  </body>
+</html>

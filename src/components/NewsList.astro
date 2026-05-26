@@ -1,0 +1,42 @@
+---
+import { formatDate } from "@/utils/content";
+type NewsEntry = { slug: string; data: { title: string; description: string; date: Date; category: string } };
+type EventEntry = { slug: string; data: { title: string; description: string; eventDate: Date; location?: string } };
+const { news = [], events = [], compact = false } = Astro.props as { news: NewsEntry[]; events: EventEntry[]; compact?: boolean };
+const featured = news[0];
+const sideNews = news.slice(1, 3);
+---
+{featured ? (
+  <div class="news-layout" data-reveal>
+    <a class="news-featured" href={`/novosti/${featured.slug}/`}>
+      <div>
+        <span class="kicker">{featured.data.category}</span>
+        <p class="meta">{formatDate(featured.data.date)}</p>
+        <h3 class="section-title" style="font-size:clamp(28px,4vw,48px)">{featured.data.title}</h3>
+        <p class="section-subtitle">{featured.data.description}</p>
+        <span class="arrow-link">Читать подробнее →</span>
+      </div>
+    </a>
+    <div class="news-side">
+      {sideNews.map((item) => (
+        <a class="cut-card" href={`/novosti/${item.slug}/`}>
+          <span class="kicker">{item.data.category}</span>
+          <p class="meta">{formatDate(item.data.date)}</p>
+          <h3 class="card-title">{item.data.title}</h3>
+          <p class="card-desc">{item.data.description}</p>
+          <span class="arrow-link" style="margin-top:20px">Читать →</span>
+        </a>
+      ))}
+      {events.slice(0, compact ? 1 : 2).map((event) => (
+        <a class="cut-card" href={`/sobytiya/${event.slug}/`}>
+          <span class="kicker">Событие</span>
+          <p class="meta">{formatDate(event.data.eventDate)}{event.data.location ? ` · ${event.data.location}` : ""}</p>
+          <h3 class="card-title">{event.data.title}</h3>
+          <p class="card-desc">{event.data.description}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+) : (
+  <p class="section-subtitle">Материалы появятся после публикации в CMS.</p>
+)}

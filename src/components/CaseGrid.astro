@@ -1,0 +1,17 @@
+---
+type CaseEntry = { data: { title: string; segment: string; task: string; solution: string; result: string } };
+const { cases = [] } = Astro.props as { cases: CaseEntry[] };
+---
+<div class="card-grid two">
+  {cases.map((item) => (
+    <article class="cut-card" data-reveal>
+      <span class="kicker">{item.data.segment}</span>
+      <h3 class="card-title">{item.data.title}</h3>
+      <div class="case-rows">
+        <div class="case-row"><b>Задача</b><span>{item.data.task}</span></div>
+        <div class="case-row"><b>Решение</b><span>{item.data.solution}</span></div>
+      </div>
+      <div class="accent-box">{item.data.result}</div>
+    </article>
+  ))}
+</div>

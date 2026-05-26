@@ -1,0 +1,41 @@
+---
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import { site } from "@/data/site";
+import "@/styles/global.css";
+
+const {
+  title = site.name,
+  description = "Институт цифрового биодизайна и искусственного интеллекта в медицине Сеченовского Университета.",
+  image = "/og-default.svg",
+  canonical,
+} = Astro.props;
+const canonicalUrl = new URL(canonical || Astro.url.pathname, site.url).toString();
+const pageTitle = title.includes("Сеченов") ? title : `${title} - ${site.university}`;
+---
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={new URL(image, site.url).toString()} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.svg" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Перейти к содержимому</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <script is:inline src="/site.js" defer></script>
+  </body>
+</html>

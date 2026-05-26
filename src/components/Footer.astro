@@ -1,0 +1,36 @@
+---
+import { nav, site } from "@/data/site";
+---
+<footer class="site-footer">
+  <div class="container footer-main">
+    <div class="footer-brand">
+      <a class="logo" href="/" aria-label="На главную">
+        <img src="/logo-sechenov.svg" alt="Сеченовский Университет" width="132" height="34" />
+      </a>
+      <p>{site.name}: образование, исследования, консалтинг и цифровые решения для медицины.</p>
+      <div class="footer-cta-box">
+        <p>Готовы обсудить проект или подобрать программу?</p>
+        <a class="btn-primary" href="/kontakty/?topic=project#request-form">Написать нам</a>
+      </div>
+    </div>
+    <div>
+      <h2 class="footer-nav-title">Навигация</h2>
+      <ul class="footer-nav-list">
+        {nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+      </ul>
+    </div>
+    <div>
+      <h2 class="footer-nav-title">Контакты</h2>
+      <ul class="footer-nav-list">
+        <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+        <li>{site.address}</li>
+        <li><a href="https://www.sechenov.ru/">sechenov.ru</a></li>
+        <li><a href="/sitemap-index.xml">Карта сайта</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>2026 - ФГАОУ ВО Первый МГМУ имени И.М. Сеченова Минздрава России</span>
+    <span>Статический сайт на Astro + Decap CMS</span>
+  </div>
+</footer>

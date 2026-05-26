@@ -1,0 +1,20 @@
+---
+const { label, title, description, ctaPrimary, ctaSecondary } = Astro.props;
+---
+<section class="hero">
+  <div class="container hero-inner" data-reveal>
+    {label && <div class="hero-eyebrow">{label}</div>}
+    <h1 set:html={title}></h1>
+    {description && <p class="hero-sub">{description}</p>}
+    <div class="hero-ctas">
+      {ctaPrimary && <a class="btn-primary" href={ctaPrimary.href}>{ctaPrimary.label}</a>}
+      {ctaSecondary && <a class="btn-outline" href={ctaSecondary.href}>{ctaSecondary.label}</a>}
+    </div>
+    <div class="hero-pills" aria-label="Ключевые направления">
+      <a class="pill" href="/nauka-i-razrabotki/#digital-services">AI-сервисы</a>
+      <a class="pill" href="/nauka-i-razrabotki/#nir-niokr">НИР/НИОКР</a>
+      <a class="pill" href="/obrazovanie/#programs">Образование</a>
+      <a class="pill" href="/partnerstva/">Партнёрства</a>
+    </div>
+  </div>
+</section>

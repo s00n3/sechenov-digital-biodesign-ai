@@ -1,0 +1,33 @@
+---
+import { nav, site } from "@/data/site";
+---
+<header class="site-header" id="site-header">
+  <div class="header-top">
+    <div class="container header-top-inner">
+      <span>{site.university}</span>
+      <span>Цифровая медицина, биодизайн и искусственный интеллект</span>
+    </div>
+  </div>
+  <div class="container header-main">
+    <a class="logo" href="/" aria-label="На главную">
+      <img src="/logo-sechenov.svg" alt="Сеченовский Университет" width="132" height="34" />
+      <span class="logo-divider"></span>
+      <span class="logo-title">Digital Biodesign AI</span>
+    </a>
+    <nav class="main-nav" aria-label="Основная навигация">
+      {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+    </nav>
+    <div class="header-actions">
+      <a class="btn-sm btn-sm-outline" href="/obrazovanie/#programs">Подобрать программу</a>
+      <a class="btn-sm btn-sm-primary" href="/kontakty/?topic=project#request-form">Обсудить проект</a>
+      <button class="mobile-menu-btn" type="button" id="menu-toggle" aria-label="Открыть меню" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Мобильная навигация">
+    {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+    <a href="/obrazovanie/#programs">Подобрать программу</a>
+    <a href="/kontakty/?topic=project#request-form">Обсудить проект</a>
+  </nav>
+</header>

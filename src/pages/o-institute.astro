@@ -1,0 +1,16 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageHero from "@/components/PageHero.astro";
+import SectionHeader from "@/components/SectionHeader.astro";
+import NewsList from "@/components/NewsList.astro";
+import ContentCards from "@/components/ContentCards.astro";
+import { getPublishedCollection } from "@/utils/content";
+const [news, events] = await Promise.all([getPublishedCollection("news"), getPublishedCollection("events")]);
+news.sort((a,b)=>+b.data.date-+a.data.date);
+events.sort((a,b)=>+a.data.eventDate-+b.data.eventDate);
+---
+<BaseLayout title="О институте" description="Миссия, роль и новости Института цифрового биодизайна и ИИ в медицине.">
+  <PageHero label="О институте" title={"Институт на стыке <span>медицины, данных и биодизайна</span>"} description="Мы развиваем цифровую медицину через образование, исследования, партнёрские проекты и внедрение AI-решений." ctaPrimary={{ label: "Связаться", href: "/kontakty/?topic=project#request-form" }} />
+  <section class="section section-dark"><div class="container"><SectionHeader label="Миссия" title="Делаем AI и биодизайн применимыми в медицине" /><ContentCards items={[{icon:"medical",title:"Клиническая польза",desc:"Каждый проект связываем с реальной задачей врача, пациента или системы здравоохранения."},{icon:"science",title:"Научная глубина",desc:"Опираемся на исследовательскую экспертизу и доказательный подход."},{icon:"product",title:"Внедрение",desc:"Думаем не только о модели, но и о процессе, интерфейсе, данных и устойчивости решения."}]} /></div></section>
+  <section class="section section-deep"><div class="container"><SectionHeader label="Новости и события" title="Что происходит в институте" link={{label:"Все новости",href:"/novosti/"}} /><NewsList news={news.slice(0,3)} events={events.slice(0,2)} compact /></div></section>
+</BaseLayout>

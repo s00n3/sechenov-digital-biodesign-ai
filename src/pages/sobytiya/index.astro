@@ -1,0 +1,12 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageHero from "@/components/PageHero.astro";
+import SectionHeader from "@/components/SectionHeader.astro";
+import { formatDate, getPublishedCollection } from "@/utils/content";
+const events = await getPublishedCollection("events");
+events.sort((a,b)=>+a.data.eventDate-+b.data.eventDate);
+---
+<BaseLayout title="События" description="События, конференции, школы и интенсивы института.">
+  <PageHero label="События" title={"События и <span>открытые форматы</span>"} description="Конференции, хакатоны, школы и публичные мероприятия из CMS." />
+  <section class="section section-dark"><div class="container"><SectionHeader label="Календарь" title="Все события" /><div class="card-grid">{events.map((item)=><a class="cut-card" href={`/sobytiya/${item.slug}/`} data-reveal><span class="kicker">{item.data.format}</span><p class="meta">{formatDate(item.data.eventDate)}{item.data.location ? ` · ${item.data.location}` : ""}</p><h2 class="card-title">{item.data.title}</h2><p class="card-desc">{item.data.description}</p><span class="arrow-link" style="margin-top:22px">Подробнее →</span></a>)}</div></div></section>
+</BaseLayout>
