@@ -11,7 +11,8 @@ import { withBase } from "@/utils/paths";
   </div>
   <div class="container header-main">
     <a class="logo" href={withBase("/")} aria-label="На главную">
-      <img src={withBase("/logo-sechenov.svg")} alt="Сеченовский Университет" width="132" height="34" />
+      <img class="logo-light" src={withBase("/logo-sechenov.svg")} alt="Сеченовский Университет" width="132" height="34" />
+      <img class="logo-dark" src={withBase("/logo-sechenov-white.svg")} alt="" width="132" height="34" aria-hidden="true" />
       <span class="logo-divider"></span>
       <span class="logo-title">Digital Biodesign AI</span>
     </a>
@@ -21,6 +22,10 @@ import { withBase } from "@/utils/paths";
     <div class="header-actions">
       <a class="btn-sm btn-sm-outline" href={withBase("/obrazovanie/#programs")}>Подобрать программу</a>
       <a class="btn-sm btn-sm-primary" href={withBase("/kontakty/?topic=project#request-form")}>Обсудить проект</a>
+      <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Переключить тёмную тему" aria-pressed="false">
+        <span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
+        <span class="theme-toggle-text">Тема</span>
+      </button>
       <button class="mobile-menu-btn" type="button" id="menu-toggle" aria-label="Открыть меню" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>

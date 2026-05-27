@@ -16,9 +16,15 @@ const canonicalUrl = new URL(canonical ? withBase(canonical) : Astro.url.pathnam
 const pageTitle = title.includes("Сеченов") ? title : `${title} - ${site.university}`;
 ---
 <!doctype html>
-<html lang="ru">
+<html lang="ru" data-theme="light">
   <head>
     <meta charset="utf-8" />
+    <script is:inline>
+      try {
+        const theme = localStorage.getItem("site-theme");
+        if (theme === "dark") document.documentElement.dataset.theme = "dark";
+      } catch {}
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />

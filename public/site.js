@@ -1,5 +1,32 @@
 const menuBtn = document.getElementById("menu-toggle");
 const mobileNav = document.getElementById("mobile-nav");
+const themeToggle = document.getElementById("theme-toggle");
+
+const setTheme = (theme) => {
+  const nextTheme = theme === "dark" ? "dark" : "light";
+  document.documentElement.dataset.theme = nextTheme;
+  if (themeToggle) {
+    themeToggle.setAttribute("aria-pressed", String(nextTheme === "dark"));
+    themeToggle.setAttribute("aria-label", nextTheme === "dark" ? "Включить светлую тему" : "Включить тёмную тему");
+  }
+};
+
+try {
+  setTheme(localStorage.getItem("site-theme") || "light");
+} catch {
+  setTheme(document.documentElement.dataset.theme || "light");
+}
+
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+    setTheme(nextTheme);
+    try {
+      localStorage.setItem("site-theme", nextTheme);
+    } catch {}
+  });
+}
+
 if (menuBtn && mobileNav) {
   menuBtn.addEventListener("click", () => {
     const open = mobileNav.classList.toggle("open");
