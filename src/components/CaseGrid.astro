@@ -13,7 +13,7 @@ const { cases = [] } = Astro.props as { cases: CaseEntry[] };
         <div class="case-row"><b>Задача</b><span>{item.data.task}</span></div>
         <div class="case-row"><b>Решение</b><span>{item.data.solution}</span></div>
       </div>
-      <div class="accent-box">{item.data.result}</div>
+      <div class="accent-box"><span>{item.data.result}</span></div>
     </article>
   ))}
 </div>
