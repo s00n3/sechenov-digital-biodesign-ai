@@ -5,6 +5,7 @@ eventDate: 2026-06-12T10:00:00+03:00
 format: "Очно"
 location: "Москва"
 registrationUrl: "/kontakty/?topic=project#request-form"
+image: "/uploads/placeholders/medical-education.jpg"
 published: true
 ---
 

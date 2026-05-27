@@ -1,11 +1,12 @@
 ---
 import { withBase } from "@/utils/paths";
-type ProgramEntry = { data: { title: string; description: string; audience: string; direction: string; duration: string; format: string; ctaLabel: string } };
+type ProgramEntry = { data: { title: string; description: string; audience: string; direction: string; duration: string; format: string; ctaLabel: string; image?: string } };
 const { programs = [] } = Astro.props as { programs: ProgramEntry[] };
 ---
 <div class="card-grid two">
   {programs.map((program) => (
     <article class="cut-card" data-reveal>
+      {program.data.image && <img class="card-media" src={withBase(program.data.image)} alt={program.data.title} loading="lazy" decoding="async" />}
       <span class="kicker">{program.data.direction}</span>
       <h3 class="card-title">{program.data.title}</h3>
       <p class="card-desc">{program.data.description}</p>

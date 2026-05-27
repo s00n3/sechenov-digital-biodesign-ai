@@ -1,18 +1,24 @@
 ---
 const { name = "ai" } = Astro.props as { name?: string };
 const paths = {
-  ai: "M12 3v18M5 8h14M5 16h14M8 5l8 14M16 5 8 14",
-  medical: "M12 5v14M5 12h14M7 7h10v10H7z",
-  pharma: "M8 4h8M10 4v5l-4 8a3 3 0 0 0 3 4h6a3 3 0 0 0 3-4l-4-8V4",
+  ai: "M12 2a3 3 0 0 1 3 3v1h1a3 3 0 0 1 3 3v1h1a2 2 0 0 1 0 4h-1v1a3 3 0 0 1-3 3h-1v1a3 3 0 0 1-6 0v-1H8a3 3 0 0 1-3-3v-1H4a2 2 0 0 1 0-4h1V9a3 3 0 0 1 3-3h1V5a3 3 0 0 1 3-3zM9 9h6v6H9z",
+  medical: "M8 3h8v5h5v8h-5v5H8v-5H3V8h5V3z",
+  pharma: "M9 3h6M10 3v6l-4 7.5A3 3 0 0 0 8.7 21h6.6a3 3 0 0 0 2.7-4.5L14 9V3M8 15h8",
   state: "M4 10h16M6 10V8l6-4 6 4v2M7 10v8M12 10v8M17 10v8M5 18h14",
-  science: "M9 3v5l-4 8a4 4 0 0 0 4 5h6a4 4 0 0 0 4-5l-4-8V3M8 3h8",
+  science: "M9 3h6M10 3v6l-4 8a3 3 0 0 0 3 4h6a3 3 0 0 0 3-4l-4-8V3M8 14h8",
   tech: "M8 8h8v8H8zM4 10h4M4 14h4M16 10h4M16 14h4M10 4v4M14 4v4M10 16v4M14 16v4",
-  students: "M3 8l9-4 9 4-9 4-9-4zM7 11v5c2 2 8 2 10 0v-5",
-  data: "M5 7c0-2 14-2 14 0v10c0 2-14 2-14 0V7zM5 12c0 2 14 2 14 0",
-  bio: "M7 4c10 4 10 12 0 16M17 4C7 8 7 16 17 20M8 8h8M8 16h8",
-  product: "M4 6h16v12H4zM8 10h8M8 14h5",
+  students: "M3 8l9-4 9 4-9 4-9-4zM7 11v5c2 2 8 2 10 0v-5M19 9v6",
+  data: "M5 7c0-2 14-2 14 0v10c0 2-14 2-14 0V7zM5 12c0 2 14 2 14 0M9 16h.01M12 16h.01M15 16h.01",
+  bio: "M7 4c10 4 10 12 0 16M17 4C7 8 7 16 17 20M8 8h8M8 12h8M8 16h8",
+  product: "M4 5h16v12H4zM8 21h8M12 17v4M8 9h8M8 13h5",
   ethics: "M12 3l7 4v5c0 5-3 8-7 9-4-1-7-4-7-9V7l7-4zM9 12l2 2 4-5",
-  education: "M4 7l8-4 8 4-8 4-8-4zM6 10v5c3 3 9 3 12 0v-5",
+  education: "M4 7l8-4 8 4-8 4-8-4zM6 10v5c3 3 9 3 12 0v-5M12 13v7",
+  partnership: "M8 12l2 2a3 3 0 0 0 4 0l2-2M7 13l-2-2a3 3 0 0 1 4-4l1 1M17 13l2-2a3 3 0 0 0-4-4l-1 1M3 18h18",
+  consulting: "M4 5h16v11H8l-4 4V5zM8 9h8M8 13h5",
+  development: "M8 9l-4 3 4 3M16 9l4 3-4 3M14 5l-4 14",
+  analytics: "M4 19V5M4 19h16M8 16v-4M12 16V8M16 16v-7M20 16v-2",
+  research: "M10 3v5l-4 9a3 3 0 0 0 3 4h6a3 3 0 0 0 3-4l-4-9V3M8 3h8M9 14h6",
+  pilot: "M5 19l4-10 4 4 6-8-4 14-4-4-6 4z",
   arrow: "M5 12h14M13 6l6 6-6 6",
 };
 const path = paths[name as keyof typeof paths] || paths.ai;

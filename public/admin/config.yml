@@ -64,6 +64,7 @@ collections:
       - { label: "Длительность", name: "duration", widget: "string" }
       - { label: "Формат", name: "format", widget: "string" }
       - { label: "CTA", name: "ctaLabel", widget: "string", default: "Оставить заявку" }
+      - { label: "Обложка", name: "image", widget: "image", required: false }
       - { label: "SEO Title", name: "seoTitle", widget: "string", required: false }
       - { label: "SEO Description", name: "seoDescription", widget: "text", required: false }
       - { label: "Опубликовано", name: "published", widget: "boolean", default: true }
@@ -79,6 +80,7 @@ collections:
       - { label: "Задача", name: "task", widget: "text" }
       - { label: "Решение", name: "solution", widget: "text" }
       - { label: "Результат", name: "result", widget: "text" }
+      - { label: "Обложка", name: "image", widget: "image", required: false }
       - { label: "SEO Title", name: "seoTitle", widget: "string", required: false }
       - { label: "SEO Description", name: "seoDescription", widget: "text", required: false }
       - { label: "Опубликовано", name: "published", widget: "boolean", default: true }
@@ -93,6 +95,7 @@ collections:
       - { label: "Группа", name: "group", widget: "string" }
       - { label: "Описание", name: "description", widget: "text" }
       - { label: "Руководитель", name: "lead", widget: "string", required: false }
+      - { label: "Обложка", name: "image", widget: "image", required: false }
       - { label: "SEO Title", name: "seoTitle", widget: "string", required: false }
       - { label: "SEO Description", name: "seoDescription", widget: "text", required: false }
       - { label: "Опубликовано", name: "published", widget: "boolean", default: true }

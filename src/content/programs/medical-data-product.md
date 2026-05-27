@@ -6,6 +6,7 @@ direction: "Данные"
 duration: "6 недель"
 format: "Смешанный"
 ctaLabel: "Оставить заявку"
+image: "/uploads/placeholders/medical-team.jpg"
 published: true
 ---
 

@@ -3,6 +3,7 @@ title: "Офис образовательных программ"
 group: "Образование"
 description: "Разработка программ для студентов, врачей, исследователей и корпоративных команд."
 lead: "Методическая группа"
+image: "/uploads/placeholders/medical-education.jpg"
 published: true
 ---
 

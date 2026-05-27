@@ -3,6 +3,7 @@ title: "Центр цифрового биодизайна"
 group: "Биодизайн"
 description: "Поиск медицинских проблем, проектирование решений, проверка гипотез и сопровождение MedTech-проектов."
 lead: "Проектная команда"
+image: "/uploads/placeholders/partnership.jpg"
 published: true
 ---
 

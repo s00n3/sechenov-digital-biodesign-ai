@@ -3,6 +3,7 @@ title: "Открыт набор на Цифровую кафедру 2026/27"
 description: "Студенты смогут выбрать треки по анализу данных, ML и разработке медицинских цифровых продуктов."
 date: 2026-04-22T12:00:00+03:00
 category: "Образование"
+image: "/uploads/placeholders/medical-education.jpg"
 published: true
 ---
 

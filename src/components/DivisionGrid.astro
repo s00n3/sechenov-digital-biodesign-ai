@@ -1,10 +1,12 @@
 ---
-type DivisionEntry = { data: { title: string; group: string; description: string; lead?: string } };
+import { withBase } from "@/utils/paths";
+type DivisionEntry = { data: { title: string; group: string; description: string; lead?: string; image?: string } };
 const { divisions = [] } = Astro.props as { divisions: DivisionEntry[] };
 ---
 <div class="card-grid three">
   {divisions.map((division) => (
     <article class="cut-card" data-reveal>
+      {division.data.image && <img class="card-media" src={withBase(division.data.image)} alt={division.data.title} loading="lazy" decoding="async" />}
       <span class="kicker">{division.data.group}</span>
       <h3 class="card-title">{division.data.title}</h3>
       <p class="card-desc">{division.data.description}</p>

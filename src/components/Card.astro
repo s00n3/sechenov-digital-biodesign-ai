@@ -1,10 +1,11 @@
 ---
 import Icon from "@/components/Icon.astro";
 import { withBase } from "@/utils/paths";
-const { icon = "ai", title, desc, href, meta } = Astro.props;
+const { icon = "ai", title, desc, href, meta, image, imageAlt } = Astro.props;
 const Tag = href ? "a" : "article";
 ---
 <Tag class="cut-card" href={href ? withBase(href) : undefined} data-reveal>
+  {image && <img class="card-media" src={withBase(image)} alt={imageAlt || title} loading="lazy" decoding="async" />}
   <div class="card-icon"><Icon name={icon} /></div>
   {meta && <div class="num">{meta}</div>}
   <h3 class="card-title">{title}</h3>

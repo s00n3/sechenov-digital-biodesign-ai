@@ -28,6 +28,8 @@ events.sort((a, b) => +a.data.eventDate - +b.data.eventDate);
     description="Помогаем медицинским организациям, исследователям и индустриальным партнёрам запускать AI-решения, НИР/НИОКР, образовательные программы и совместные цифровые продукты."
     ctaPrimary={{ label: "Обсудить проект", href: "/kontakty/?topic=project#request-form" }}
     ctaSecondary={{ label: "Подобрать программу", href: "/obrazovanie/#programs" }}
+    image="/uploads/placeholders/doctor-tablet.jpg"
+    imageAlt="Медицинские специалисты изучают данные на планшете"
   />
   <section class="section section-dark" id="audiences">
     <div class="container">
@@ -38,7 +40,7 @@ events.sort((a, b) => +a.data.eventDate - +b.data.eventDate);
   <section class="section section-purple" id="services">
     <div class="container">
       <SectionHeader label="Услуги" title="От идеи до внедрения" subtitle="Объединяем научную экспертизу, продуктовый подход и разработку цифровых решений для медицинского контура." />
-      <ContentCards columns="two" items={services.map((s) => ({ icon: "ai", title: s.title, desc: `${s.sub}. ${s.desc}`, href: s.href, meta: s.num }))} />
+      <ContentCards columns="two" items={services.map((s) => ({ icon: s.icon, title: s.title, desc: `${s.sub}. ${s.desc}`, href: s.href, meta: s.num }))} />
     </div>
   </section>
   <section class="section section-deep" id="competencies">
@@ -68,7 +70,7 @@ events.sort((a, b) => +a.data.eventDate - +b.data.eventDate);
   <section class="section section-deep" id="collab">
     <div class="container">
       <SectionHeader label="Партнёрства" title="Форматы сотрудничества" link={{ label: "Стать партнёром", href: "/partnerstva/" }} />
-      <ContentCards items={partnershipFormats.map(([title, desc, time]) => ({ icon: "product", title, desc: `${desc} Срок: ${time}`, href: "/kontakty/?topic=partnership#request-form" }))} />
+      <ContentCards items={partnershipFormats.map(([title, desc, time], index) => ({ icon: ["analytics", "pilot", "research", "education", "development", "consulting"][index] || "partnership", title, desc: `${desc} Срок: ${time}`, href: "/kontakty/?topic=partnership#request-form" }))} />
     </div>
   </section>
   <section class="section section-dark" id="news">

@@ -1,10 +1,12 @@
 ---
-type CaseEntry = { data: { title: string; segment: string; task: string; solution: string; result: string } };
+import { withBase } from "@/utils/paths";
+type CaseEntry = { data: { title: string; segment: string; task: string; solution: string; result: string; image?: string } };
 const { cases = [] } = Astro.props as { cases: CaseEntry[] };
 ---
 <div class="card-grid two">
   {cases.map((item) => (
     <article class="cut-card" data-reveal>
+      {item.data.image && <img class="card-media" src={withBase(item.data.image)} alt={item.data.title} loading="lazy" decoding="async" />}
       <span class="kicker">{item.data.segment}</span>
       <h3 class="card-title">{item.data.title}</h3>
       <div class="case-rows">

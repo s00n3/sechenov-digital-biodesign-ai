@@ -1,15 +1,16 @@
 ---
 import { formatDate } from "@/utils/content";
 import { withBase } from "@/utils/paths";
-type NewsEntry = { slug: string; data: { title: string; description: string; date: Date; category: string } };
-type EventEntry = { slug: string; data: { title: string; description: string; eventDate: Date; location?: string } };
+type NewsEntry = { slug: string; data: { title: string; description: string; date: Date; category: string; image?: string } };
+type EventEntry = { slug: string; data: { title: string; description: string; eventDate: Date; location?: string; image?: string } };
 const { news = [], events = [], compact = false } = Astro.props as { news: NewsEntry[]; events: EventEntry[]; compact?: boolean };
 const featured = news[0];
 const sideNews = news.slice(1, 3);
+const featuredImage = featured?.data.image || "/uploads/placeholders/research-lab.jpg";
 ---
 {featured ? (
   <div class="news-layout" data-reveal>
-    <a class="news-featured" href={withBase(`/novosti/${featured.slug}/`)}>
+    <a class="news-featured" href={withBase(`/novosti/${featured.slug}/`)} style={`--news-image:url('${withBase(featuredImage)}')`}>
       <div>
         <span class="kicker">{featured.data.category}</span>
         <p class="meta">{formatDate(featured.data.date)}</p>
@@ -21,6 +22,7 @@ const sideNews = news.slice(1, 3);
     <div class="news-side">
       {sideNews.map((item) => (
         <a class="cut-card" href={withBase(`/novosti/${item.slug}/`)}>
+          {item.data.image && <img class="card-media compact" src={withBase(item.data.image)} alt={item.data.title} loading="lazy" decoding="async" />}
           <span class="kicker">{item.data.category}</span>
           <p class="meta">{formatDate(item.data.date)}</p>
           <h3 class="card-title">{item.data.title}</h3>
@@ -30,6 +32,7 @@ const sideNews = news.slice(1, 3);
       ))}
       {events.slice(0, compact ? 1 : 2).map((event) => (
         <a class="cut-card" href={withBase(`/sobytiya/${event.slug}/`)}>
+          {event.data.image && <img class="card-media compact" src={withBase(event.data.image)} alt={event.data.title} loading="lazy" decoding="async" />}
           <span class="kicker">Событие</span>
           <p class="meta">{formatDate(event.data.eventDate)}{event.data.location ? ` · ${event.data.location}` : ""}</p>
           <h3 class="card-title">{event.data.title}</h3>

@@ -3,6 +3,7 @@ title: "AI-модель диагностики рака лёгкого пока�
 description: "Команда института представила результаты исследования алгоритма анализа медицинских изображений."
 date: 2026-04-05T09:00:00+03:00
 category: "Наука"
+image: "/uploads/placeholders/medical-team.jpg"
 published: true
 ---
 

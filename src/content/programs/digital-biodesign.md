@@ -6,6 +6,7 @@ direction: "Биодизайн"
 duration: "4 недели"
 format: "Интенсив"
 ctaLabel: "Подать заявку"
+image: "/uploads/placeholders/partnership.jpg"
 published: true
 ---
 

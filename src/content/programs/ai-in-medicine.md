@@ -6,6 +6,7 @@ direction: "AI и данные"
 duration: "8 недель"
 format: "Онлайн + проектная работа"
 ctaLabel: "Записаться"
+image: "/uploads/placeholders/doctor-tablet.jpg"
 published: true
 ---
 
